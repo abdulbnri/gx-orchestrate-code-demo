@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  demo:
+    build:
+      context: D:\gx-demo\console-app
+      dockerfile: docker/Dockerfile
+    container_name: demo_container
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+
+  webhook-poc:
+    build:
+      context: D:\gx-demo\webhook-poc
+      dockerfile: docker/Dockerfile
+    container_name: webhook_poc_container
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
